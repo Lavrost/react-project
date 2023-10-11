@@ -1,5 +1,6 @@
-export function someFn(arg: number): string {
-    console.log('RANDOM FUNCTION')
-
-    return ''
+export function someFn(count: number): void {
+    console.log(count)
+    for(let i = 0; i < count; i++) {
+        console.log('Hi, dude!')
+    }
 }
