@@ -1,19 +1,16 @@
-<<<<<<< HEAD
-import { Suspense } from "react";
+import { Suspense, useContext, useState } from "react";
 import { Route, Routes, Link } from "react-router-dom";
-import "./index.scss";
 import { AboutPageAsync } from "./pages/AboutPage/AboutPage.async";
 import { MainPageAsync } from "./pages/MainPage/MainPage.async";
-=======
-import { Counter } from "./components/Counter/Counter";
-import "./index.scss";
+import "./styles/index.scss";
+import { useTheme } from "./theme/useTheme";
 
->>>>>>> f90c1c1c0b2d61c41ce92ec4e94c2add509cb783
 
 const App = () => {
+    const { theme, toggleTheme } = useTheme()
     return (
-        <div className="app">
-<<<<<<< HEAD
+        <div className={`app ${theme}`}>
+            <button onClick={toggleTheme}>Сменить тему</button>
             <Link to={'/'}>Главаная</Link>
             <Link to={'/about'}>О нас</Link>
             <Suspense fallback={<div>Loading...</div>}>
@@ -22,10 +19,6 @@ const App = () => {
                     <Route path={'/'} element={<MainPageAsync />}/>
                 </Routes>
             </Suspense>
-=======
-            Hello, world!
-            <Counter />
->>>>>>> f90c1c1c0b2d61c41ce92ec4e94c2add509cb783
         </div>
     )
 }
