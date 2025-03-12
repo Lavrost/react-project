@@ -1,4 +1,5 @@
 module.exports = {
+    /* eslint linebreak-style: ["error", "windows"] */
     env: {
         browser: true,
         es2021: true,
@@ -6,8 +7,8 @@ module.exports = {
     },
     extends: [
         'plugin:react/recommended',
-        'plugin:i18next/recommended',
         'airbnb',
+        'plugin:i18next/recommended',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -42,9 +43,24 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
         'linebreak-style': 'off',
-        'max-len': ['error', { ignoreComments: true }],
+        'i18next/no-literal-string': [
+            'error',
+            {
+                markupOnly: true,
+                ignoreAttribute: ['data-testid'],
+            },
+        ],
+        'max-len': ['error', { ignoreComments: true, code: 100 }],
     },
     globals: {
         __IS_DEV__: true,
     },
+    overrides: [
+        {
+            files: ['**/src/**/*.test.{ts,tsx}'],
+            rules: {
+                'i18next/no-literal-string': 'off',
+            },
+        },
+    ],
 };
